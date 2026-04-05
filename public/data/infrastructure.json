@@ -1,0 +1,89 @@
+{
+  "pipelines": [
+    {
+      "id": "east-west-pipeline",
+      "name": "Saudi Aramco East-West Pipeline (Petroline)",
+      "country": "Saudi Arabia",
+      "type": "oil_pipeline",
+      "capacity_mbpd": 5.0,
+      "status": "operational",
+      "is_bypass": true,
+      "bypass_for": "Strait of Hormuz",
+      "coordinates": [
+        { "lat": 25.38, "lon": 49.68 },
+        { "lat": 24.80, "lon": 47.50 },
+        { "lat": 24.10, "lon": 45.50 },
+        { "lat": 23.50, "lon": 42.00 },
+        { "lat": 22.70, "lon": 39.10 }
+      ],
+      "description": "Hormuz bypass. Abqaiq to Red Sea coast at Yanbu. Full capacity."
+    },
+    {
+      "id": "habshan-fujairah",
+      "name": "Habshan-Fujairah Pipeline (ADCOP)",
+      "country": "UAE",
+      "type": "oil_pipeline",
+      "capacity_mbpd": 1.5,
+      "status": "operational",
+      "is_bypass": true,
+      "bypass_for": "Strait of Hormuz",
+      "coordinates": [
+        { "lat": 23.83, "lon": 53.78 },
+        { "lat": 24.20, "lon": 54.50 },
+        { "lat": 25.00, "lon": 55.80 },
+        { "lat": 25.15, "lon": 56.35 }
+      ],
+      "description": "UAE Hormuz bypass. Abu Dhabi to Gulf of Oman coast at Fujairah."
+    },
+    {
+      "id": "goreh-jask",
+      "name": "Goreh-Jask Pipeline",
+      "country": "Iran",
+      "type": "oil_pipeline",
+      "capacity_mbpd": 0.3,
+      "status": "limited",
+      "is_bypass": true,
+      "bypass_for": "Kharg Island",
+      "coordinates": [
+        { "lat": 27.40, "lon": 52.59 },
+        { "lat": 26.80, "lon": 54.00 },
+        { "lat": 26.20, "lon": 55.50 },
+        { "lat": 25.65, "lon": 57.77 }
+      ],
+      "description": "Iran's only Kharg alternative. Design capacity 1 Mbpd but effective ~0.3 Mbpd."
+    },
+    {
+      "id": "dolphin-gas",
+      "name": "Dolphin Gas Pipeline",
+      "country": "Qatar-UAE",
+      "type": "gas_pipeline",
+      "capacity_bcf_day": 3.2,
+      "status": "disrupted",
+      "is_bypass": false,
+      "coordinates": [
+        { "lat": 25.93, "lon": 51.54 },
+        { "lat": 25.50, "lon": 52.20 },
+        { "lat": 25.10, "lon": 53.00 },
+        { "lat": 24.45, "lon": 54.65 }
+      ],
+      "description": "Natural gas from Qatar to UAE. Disrupted by Ras Laffan damage."
+    }
+  ],
+  "chokepoints": [
+    {
+      "id": "strait-of-hormuz",
+      "name": "Strait of Hormuz",
+      "coordinates": { "lat": 26.5667, "lon": 56.2500 },
+      "width_km": 34,
+      "shipping_lane_km": 3.2,
+      "pre_crisis_traffic_pct": 100,
+      "post_crisis_traffic_pct": 7.8,
+      "transit_drop_pct": 92.2,
+      "daily_oil_transit_mbpd": 20,
+      "global_oil_share_pct": 20,
+      "global_lng_share_pct": 25,
+      "description": "1/5 of global oil trade and 1/4 of LNG passes through here.",
+      "zone_radius_km": 80
+    }
+  ]
+}

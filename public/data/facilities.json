@@ -1,0 +1,221 @@
+{
+  "metadata": {
+    "scenario": "Operation Epic Fury",
+    "date_range": "2026-02-28 / 2026-03-15",
+    "last_updated": "2026-04-04"
+  },
+  "global_baselines": {
+    "oil_production_mbpd": 102.0,
+    "lng_capacity_mtpa": 400.0,
+    "helium_production_mcm_year": 190.0
+  },
+  "facilities": [
+    {
+      "id": "ras-laffan-lng",
+      "name": "Ras Laffan LNG Complex",
+      "country": "Qatar",
+      "coordinates": { "lat": 25.9304, "lon": 51.5361 },
+      "type": "lng_terminal",
+      "status": "damaged",
+      "pre_crisis": {
+        "capacity_mtpa": 77,
+        "global_share_pct": 20.0,
+        "products": ["LNG", "Helium", "Condensate", "GTL"],
+        "description": "World's largest LNG export terminal. 14 liquefaction trains."
+      },
+      "post_crisis": {
+        "damage_level": "severe",
+        "remaining_capacity_pct": 15,
+        "estimated_repair_months": 36,
+        "supply_loss_mtpa": 65.5,
+        "notes": "NFE/NFS construction site damaged. 6 of 8 existing trains offline."
+      },
+      "sub_facilities": [
+        {
+          "name": "Helium 1 + 2 + 3",
+          "type": "helium_plant",
+          "capacity": "70M m3/year",
+          "status": "offline",
+          "global_share_pct": 33.2,
+          "supply_loss": "63M m3/year",
+          "supply_loss_mcm": 63.0
+        },
+        {
+          "name": "Pearl GTL",
+          "type": "gtl_plant",
+          "capacity": "140,000 bpd",
+          "status": "damaged",
+          "supply_loss": "120,000 bpd",
+          "supply_loss_mbpd": 0.12
+        },
+        {
+          "name": "Dolphin Gas Hub",
+          "type": "gas_hub",
+          "capacity": "3.2 bcf/day",
+          "status": "disrupted",
+          "supply_loss": "2.4 bcf/day"
+        }
+      ]
+    },
+    {
+      "id": "kharg-island",
+      "name": "Kharg Island Oil Terminal",
+      "country": "Iran",
+      "coordinates": { "lat": 29.2333, "lon": 50.3167 },
+      "type": "oil_terminal",
+      "status": "destroyed",
+      "pre_crisis": {
+        "capacity_mbpd": 7.0,
+        "export_mbpd": 1.7,
+        "global_share_pct": 1.7,
+        "storage_mbbls": 28,
+        "products": ["Crude Oil"],
+        "description": "Handles 90-94% of Iran's crude oil exports. Can berth 10 VLCCs simultaneously."
+      },
+      "post_crisis": {
+        "damage_level": "critical",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 24,
+        "supply_loss_mbpd": 1.7,
+        "notes": "Terminal fully offline. Goreh-Jask bypass limited to ~0.3 Mbpd."
+      }
+    },
+    {
+      "id": "south-pars",
+      "name": "South Pars / Assaluyeh Gas Processing",
+      "country": "Iran",
+      "coordinates": { "lat": 27.4800, "lon": 52.5900 },
+      "type": "gas_processing",
+      "status": "damaged",
+      "pre_crisis": {
+        "capacity_mcm_day": 730,
+        "domestic_share_pct": 75,
+        "products": ["Natural Gas", "Condensate", "LPG", "Ethane"],
+        "description": "24 development phases, 52 offshore platforms. Supplies 75-80% of Iran's domestic gas."
+      },
+      "post_crisis": {
+        "damage_level": "moderate",
+        "remaining_capacity_pct": 40,
+        "estimated_repair_months": 18,
+        "supply_loss_mcm_day": 438,
+        "notes": "Some offshore platforms damaged. Assaluyeh onshore facilities partially operational."
+      }
+    },
+    {
+      "id": "abadan-refinery",
+      "name": "Abadan Refinery",
+      "country": "Iran",
+      "coordinates": { "lat": 30.3358, "lon": 48.2947 },
+      "type": "refinery",
+      "status": "destroyed",
+      "pre_crisis": {
+        "capacity_bpd": 400000,
+        "capacity_mbpd": 0.4,
+        "products": ["Gasoline", "Diesel", "Fuel Oil"],
+        "description": "Middle East's oldest and Iran's largest refinery."
+      },
+      "post_crisis": {
+        "damage_level": "critical",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 48,
+        "supply_loss_mbpd": 0.4,
+        "notes": "Historically a war target. Completely offline."
+      }
+    },
+    {
+      "id": "bandar-abbas-refinery",
+      "name": "Bandar Abbas Refinery",
+      "country": "Iran",
+      "coordinates": { "lat": 27.1865, "lon": 56.2808 },
+      "type": "refinery",
+      "status": "damaged",
+      "pre_crisis": {
+        "capacity_bpd": 320000,
+        "capacity_mbpd": 0.32,
+        "products": ["Gasoline", "Diesel", "Kerosene"],
+        "description": "Iran's strategic refinery on the Hormuz coast."
+      },
+      "post_crisis": {
+        "damage_level": "severe",
+        "remaining_capacity_pct": 20,
+        "estimated_repair_months": 24,
+        "supply_loss_mbpd": 0.256,
+        "notes": "80% of capacity offline."
+      }
+    },
+    {
+      "id": "bushehr-nuclear",
+      "name": "Bushehr Nuclear Power Plant",
+      "country": "Iran",
+      "coordinates": { "lat": 28.8328, "lon": 50.8878 },
+      "type": "nuclear_plant",
+      "status": "offline",
+      "pre_crisis": {
+        "capacity_mw": 1000,
+        "products": ["Electricity"],
+        "description": "Iran's only operational nuclear power plant. Russian-built VVER-1000."
+      },
+      "post_crisis": {
+        "damage_level": "moderate",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 12,
+        "notes": "Shut down for safety. Limited physical damage."
+      }
+    },
+    {
+      "id": "isfahan-nuclear",
+      "name": "Isfahan Nuclear Research Center",
+      "country": "Iran",
+      "coordinates": { "lat": 32.6500, "lon": 51.6833 },
+      "type": "nuclear_facility",
+      "status": "destroyed",
+      "pre_crisis": {
+        "products": ["Uranium Conversion"],
+        "description": "Uranium Conversion Facility (UCF). Critical link in the nuclear fuel cycle."
+      },
+      "post_crisis": {
+        "damage_level": "critical",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 60,
+        "notes": "Primary target of Operation Epic Fury."
+      }
+    },
+    {
+      "id": "natanz-enrichment",
+      "name": "Natanz Uranium Enrichment Facility",
+      "country": "Iran",
+      "coordinates": { "lat": 33.7250, "lon": 51.7267 },
+      "type": "nuclear_facility",
+      "status": "destroyed",
+      "pre_crisis": {
+        "products": ["Enriched Uranium"],
+        "description": "Iran's main uranium enrichment facility. Has underground sections."
+      },
+      "post_crisis": {
+        "damage_level": "critical",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 72,
+        "notes": "Targeted with bunker-buster munitions (GBU-57 MOP assessed)."
+      }
+    },
+    {
+      "id": "ras-laffan-desal",
+      "name": "Ras Laffan Desalination Plant",
+      "country": "Qatar",
+      "coordinates": { "lat": 25.92, "lon": 51.55 },
+      "type": "desalination",
+      "status": "offline",
+      "pre_crisis": {
+        "capacity_mgd": 63,
+        "products": ["Fresh Water"],
+        "description": "Supplies a significant portion of Qatar's fresh water."
+      },
+      "post_crisis": {
+        "damage_level": "moderate",
+        "remaining_capacity_pct": 0,
+        "estimated_repair_months": 6,
+        "notes": "Affected by general damage to Ras Laffan complex."
+      }
+    }
+  ]
+}
