@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import {
   Viewer,
   Ion,
@@ -17,6 +17,8 @@ import { useLayerStore } from '../stores/layerStore';
 import { useSelectionStore } from '../stores/selectionStore';
 import { FacilitiesLayer } from '../layers/facilities/FacilitiesLayer';
 import { InfrastructureLayer } from '../layers/infrastructure/InfrastructureLayer';
+
+const MAX_RESOLUTION_SCALE = 1.0;
 
 interface GlobeProps {
   onFacilityClick: (id: string) => void;
@@ -60,10 +62,19 @@ export function Globe({ onFacilityClick }: GlobeProps) {
       infoBox: false,
       requestRenderMode: true,
       maximumRenderTimeChange: Infinity,
+      targetFrameRate: 30,
+      useBrowserRecommendedResolution: true,
     });
 
     viewer.scene.backgroundColor = Color.fromCssColorString('#0a0e17');
-    viewer.scene.globe.enableLighting = true;
+    // Performance tuning — skip lighting, fog, and high-quality terrain LOD
+    viewer.scene.globe.enableLighting = false;
+    viewer.scene.fog.enabled = false;
+    if (viewer.scene.skyAtmosphere) viewer.scene.skyAtmosphere.show = false;
+    viewer.scene.globe.showGroundAtmosphere = false;
+    viewer.scene.globe.maximumScreenSpaceError = 4; // default 2 — higher = lower quality, less CPU
+    viewer.scene.globe.tileCacheSize = 50;
+    viewer.resolutionScale = Math.min(window.devicePixelRatio || 1, MAX_RESOLUTION_SCALE);
     viewer.cesiumWidget.creditContainer.setAttribute('style', 'display: none !important');
     viewer.scene.setTerrain(Terrain.fromWorldTerrain());
 
@@ -158,16 +169,6 @@ export function Globe({ onFacilityClick }: GlobeProps) {
       viewer.scene.requestRender();
     }
   }, [loaded, pipelines, chokepoints, infraEnabled]);
-
-  // Re-render on selection changes for pin appearance updates
-  const selectedIds = useSelectionStore((s) => s.selectedFacilityIds);
-  const requestRender = useCallback(() => {
-    viewerRef.current?.scene.requestRender();
-  }, []);
-
-  useEffect(() => {
-    requestRender();
-  }, [selectedIds, requestRender]);
 
   return (
     <div

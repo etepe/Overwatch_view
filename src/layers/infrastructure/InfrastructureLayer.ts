@@ -3,8 +3,7 @@ import {
   Entity,
   Cartesian3,
   Color,
-  PolylineGlowMaterialProperty,
-  PolylineDashMaterialProperty,
+  ColorMaterialProperty,
   EllipseGraphics,
   NearFarScalar,
 } from 'cesium';
@@ -51,16 +50,10 @@ export class InfrastructureLayer {
         pipeline.coordinates.flatMap((c) => [c.lon, c.lat]),
       );
 
-      const material = style.dashed
-        ? new PolylineDashMaterialProperty({
-            color: style.color,
-            dashLength: 16,
-            dashPattern: 255,
-          })
-        : new PolylineGlowMaterialProperty({
-            color: style.color,
-            glowPower: 0.15,
-          });
+      // Use a static color material — dash/glow materials cause continuous re-rendering
+      const material = new ColorMaterialProperty(
+        style.dashed ? style.color.withAlpha(0.75) : style.color,
+      );
 
       const entity = this.viewer.entities.add({
         id: `pipeline-${pipeline.id}`,
